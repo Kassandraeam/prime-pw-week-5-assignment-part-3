@@ -1,16 +1,6 @@
 console.log('***** Music Collection *****')
 
-//Problem 1:
-// Create a variable collection that starts as an empty array.
 let collection = [];
-
-//Problem 2:
-/* Add a function named addToCollection. This function should:
-   - Take in the album's title, artist, yearPublished as input parameters
-   - Create a new object having the above properties
-   - Add the new object to the end of the collection array
-   - Return the newly created object
-*/
 
 addToCollection = (title, artist, yearPublished) => {
     let information = {
@@ -18,8 +8,9 @@ addToCollection = (title, artist, yearPublished) => {
         artist: artist,
         yearPublished: yearPublished
     }
-    collection.push(collection);
-    return console.log(information);
+    collection.push(information);
+    //return console.log(information);
+    return information;
 };
 //Problem 3:
 /* Test the addToCollection function:
@@ -28,6 +19,7 @@ addToCollection = (title, artist, yearPublished) => {
    - After all are added, console.log the collection array.
 */
 
+//console.log each album as added using the returned value.
 addToCollection('Brim', 'Olafur Arnalds', 2018);
 addToCollection('Rave', 'Dxrk', 2022);
 addToCollection('Discoveries', 'amies', 2021);
@@ -35,12 +27,23 @@ addToCollection('Code 8', 'Ryan Taubert', 2022);
 addToCollection('Pink Skies', 'Noxz', 2021);
 addToCollection('Watching Ribbons', 'g s l f', 2020);
 
+console.log(collection); // After all are added, console.log the collection array.
+
 //Problem 4:
 /* Add a function named showCollection. This function should:
    - Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
    - Console.log the number of items in the array.
    - Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
 // Test the showCollection function.
+*/
+
+showCollection = (array) => {
+    console.log(`The number of items in the array is: ${array.length}`)
+    for (let i = 0; i<array.length; i++){
+        console.log(`${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`)
+    }
+}
+showCollection(collection);
 
 //Problem 5:
 /* Add a function named findByArtist. This function should:
