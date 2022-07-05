@@ -54,7 +54,19 @@ showCollection(collection);
 /* Test the findByArtist function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with   multiple matches, all are found.
 */
 
+findByArtist = (artist) => {
+    let matchedResults = [];
+    let noResults = [];
+    for (let i = 0; i < collection.length; i++) {
+        if (artist == collection[i].artist) {
+            matchedResults.push(collection[i]);
+            return console.log(`This artist was found: ${artist}.`)
+        }
+    } 
+            return console.log(`No artist was found. ${noResults}`)
+}
 
+findByArtist('Kanye');
 //Stretch Goals:
 //When testing your functions, write all tests in the JavaScript file!
 
