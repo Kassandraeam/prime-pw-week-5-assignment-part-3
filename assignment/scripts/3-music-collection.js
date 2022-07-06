@@ -7,10 +7,7 @@ addToCollection = (title, artist, yearPublished, name, duration) => {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
-        tracks: { //nested object attempt
-            name: name,
-            duration: duration
-        }
+        tracks: [name, duration] // this needs to be an array.
     }
     collection.push(information);
     //return console.log(information);
@@ -18,22 +15,25 @@ addToCollection = (title, artist, yearPublished, name, duration) => {
 };
 
 addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, 'Sudden Throw', '3:16');
-addToCollection('Rave', 'Dxrk', 2022, 'RAVE', '2:49');
-addToCollection('Discoveries', 'amies', 2021, 'Come Find Me', '3:26');
-addToCollection('What Am I Gonna Do On Sundays?', 'Olivia Dean', 2020, 'What Am I Gonna Do On Sundays?', '3:29');
-addToCollection('Fragile', 'Laufey', 2022, 'Fragile', '4:01');
-addToCollection('Festival Da Canção 2022', 'MARO', 2022, 'saudade, saudade', '3:01');
-addToCollection('Feeding Seahorses by Hand', 'Billie Marten', 2019, 'She Dances', '4:43');
+// addToCollection('Rave', 'Dxrk', 2022, 'RAVE', '2:49');
+// addToCollection('Discoveries', 'amies', 2021, 'Come Find Me', '3:26');
+// addToCollection('What Am I Gonna Do On Sundays?', 'Olivia Dean', 2020, 'What Am I Gonna Do On Sundays?', '3:29');
+// addToCollection('Fragile', 'Laufey', 2022, 'Fragile', '4:01');
+// addToCollection('Festival Da Canção 2022', 'MARO', 2022, 'saudade, saudade', '3:01');
+// addToCollection('Feeding Seahorses by Hand', 'Billie Marten', 2019, 'She Dances', '4:43');
 
 //console.log(collection); // After all are added, console.log the collection array.
 
 showCollection = (array) => {
     console.log(`The number of items in the array is: ${array.length}`)
     for (let i = 0; i<array.length; i++){
-        console.log(`${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}. Track name: ${array[i].tracks.name}. Song length: ${array[i].tracks.duration}`)
+        console.log(`${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`);
+        console.log(`${array[i].tracks[0]}: ${array[i].tracks[1]}`)
     }
-}
-//showCollection(collection);
+};
+// loop that goes through the length of the tracks array and starts it with 1. 2. 3. so on so forth and then array[i].tracks[0] and then the duration.
+//for loop that only goes through the tracks part of the object?
+showCollection(collection);
 
 findByArtist = (artist) => {
     let matchedResults = [];
@@ -46,23 +46,8 @@ findByArtist = (artist) => {
     } 
             return console.log(`No artist was found. ${noResults}`)
 }
-//This is running through the second else if statement and returning each item when it shouldn't be.
-/*
-//findByArtist('Dxrk');
-search = (searchArtist, searchYearPublished) => {
-    searchArray = [];
-    for (let i = 0; i < collection.length; i++) {
-        if (searchArtist === collection[i].artist && searchYearPublished === collection[i].yearPublished){
-            searchArray.push(collection[i].artist, collection[i].yearPublished);
-            console.log(` artist: '${collection[i].artist}', year: ${collection[i].yearPublished}`);
-        } else if (searchArtist != collection[i].artist && searchYearPublished != collection[i].yearPublished){
-            console.log('I am going through each item in the collection.');
-        } else if (searchArtist === undefined || searchArtist === null || searchArtist === '' && searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === ''){
-            console.log(collection);
-        }
-    }
-};
-*/
+
+
 search = (searchArtist, searchYearPublished) => {
     let searchArray = [];
     //no search criteria 
@@ -84,100 +69,12 @@ search = (searchArtist, searchYearPublished) => {
 
 //search(); // should console the entire collection
 //search('Olafur Arnalds', 2013); // should return (artist: 'Olafur Arnalds, year: 2013)
-search('Olaf Arnalds', 2013); // Should Empty array: search array
-
-
-//I think I want that last second else if statement outside of the for loop.
-//Last time this worked
-/*
-search = (searchArtist, searchYearPublished) => {
-    searchArray = [];
-    for (let i = 0; i<collection.length; i++){
-    if (searchArtist === collection[i].artist && searchYearPublished === collection[i].yearPublished){
-        searchArray.push(collection[i].artist, collection[i].yearPublished);
-        console.log(` artist: '${collection[i].artist}', year: ${collection[i].yearPublished}`);
-    } else if (searchArtist === undefined || searchArtist === null || searchArtist === '' &&  searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === '') {
-        console.log(collection);
-    }
-    }
-        return console.log(`Didn't find anything, your array ${searchArray}is still empty.`);
-};
-*/
-
-// search = (searchArtist, searchYearPublished) => {
-//     searchArray = [];
-//     for (let i = 0; i<collection.length; i++){
-//     if (searchArtist === collection[i].artist && searchYearPublished === collection[i].yearPublished){
-//         searchArray.push(collection[i].artist, collection[i].yearPublished);
-//         return console.log(` artist: '${collection[i].artist}', year: ${collection[i].yearPublished}`);
-//     }
-//     }
-//         return console.log(`Didn't find anything, your array ${searchArray}is still empty.`);
-// };
-
-//search();
-//search('Olafur Arnalds', 2013);
-//search();
-//search('Taylor Swift', 1994); //expect false
-//search(); // return collection
-
-//search('Olafur Arnalds', 2013); //expect true
-//search('Olivia Dean', 2020); //expect true
-//search();
-
-/*
-function (searchArtist, searchYearPublished){
-    searchArray = [];
-    for loop running through the collection {
-        if (successful searchArtist and searchYearPublished) {
-            push collection.artist and collection.year published to search array
-            console log search Array
-        }
-        else if (no results are found) {
-            console log the searchArray which should be empty
-        } 
-        else if (searchArtist === undefined || searchArtist === null || searchArtist === '' && searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === '') {
-            return collection
-        }
-    }
-}
-*/
-
-//semi working code:
-/*
-search = (searchArtist, searchYearPublished) => {
-    searchArray = [];
-    for (let i = 0; i < collection.length; i++) {
-        if (searchArtist === collection[i].artist && searchYearPublished === collection[i].yearPublished){
-            searchArray.push(collection[i].artist, collection[i].yearPublished);
-            console.log(` artist: '${collection[i].artist}', year: ${collection[i].yearPublished}`);
-        } else if (searchArtist != collection[i].artist && searchYearPublished != collection[i].yearPublished){
-            console.log('I am going through each item in the collection.');
-        } else if (searchArtist === undefined || searchArtist === null || searchArtist === '' && searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === ''){
-            return console.log(collection);
-        }
-    }
-};
-
-*/
-
-
-/*
-//If there is no search object or an empty search object provided as input, then return all albums in the collection
-// searchArtist === undefined || searchArtist === null || searchArtist === '' && searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === ''
-
-
-if (searchArtist === undefined || searchArtist === null || searchArtist === '' && searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === '')
-    return console.log(collection)
-
-// if new array matches all search criteria, return array of all items in the collection that match.
-//no results --> return empty array
-//nothing put into search criteria, return collection
+//search('Olaf Arnalds', 2013); // Should Empty array: search array
 
 
 //Problem 7:
-Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
-   - AddToCollection function to also take an input parameter for the array of tracks.
-   - Update search to allow a trackName search criteria.
-   - Update the showCollection function to display the list of tracks for each album with its name and duration.
-*/
+// Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
+//    - AddToCollection function to also take an input parameter for the array of tracks.
+//    - Update search to allow a trackName search criteria.
+//    - Update the showCollection function to display the list of tracks for each album with its name and duration.
+// */
