@@ -46,7 +46,8 @@ findByArtist = (artist) => {
     } 
             return console.log(`No artist was found. ${noResults}`)
 }
-
+//This is running through the second else if statement and returning each item when it shouldn't be.
+/*
 //findByArtist('Dxrk');
 search = (searchArtist, searchYearPublished) => {
     searchArray = [];
@@ -61,7 +62,47 @@ search = (searchArtist, searchYearPublished) => {
         }
     }
 };
+*/
+search = (searchArtist, searchYearPublished) => {
+    let searchArray = [];
+    //no search criteria 
+    if (searchArtist === undefined || searchArtist === null || searchArtist === '' &&  searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === '') {
+        return console.log(collection)
+    }
+    //if something matches
+    for (let i = 0; i<collection.length; i++){
+        if (searchArtist === collection[i].artist && searchYearPublished === collection[i].yearPublished){
+            searchArray.push(collection[i].artist, collection[i].yearPublished);
+            return console.log(` artist: '${collection[i].artist}', year: ${collection[i].yearPublished}`);
+     }
+    //no results are found
+    if (searchArtist != collection[i].artist && searchYearPublished != collection[i].yearPublished){
+            return console.log(`Empty array: `, searchArray)
+    }
+}
+};
 
+//search(); // should console the entire collection
+//search('Olafur Arnalds', 2013); // should return (artist: 'Olafur Arnalds, year: 2013)
+search('Olaf Arnalds', 2013); // Should Empty array: search array
+
+
+//I think I want that last second else if statement outside of the for loop.
+//Last time this worked
+/*
+search = (searchArtist, searchYearPublished) => {
+    searchArray = [];
+    for (let i = 0; i<collection.length; i++){
+    if (searchArtist === collection[i].artist && searchYearPublished === collection[i].yearPublished){
+        searchArray.push(collection[i].artist, collection[i].yearPublished);
+        console.log(` artist: '${collection[i].artist}', year: ${collection[i].yearPublished}`);
+    } else if (searchArtist === undefined || searchArtist === null || searchArtist === '' &&  searchYearPublished === undefined || searchYearPublished === null || searchYearPublished === '') {
+        console.log(collection);
+    }
+    }
+        return console.log(`Didn't find anything, your array ${searchArray}is still empty.`);
+};
+*/
 
 // search = (searchArtist, searchYearPublished) => {
 //     searchArray = [];
@@ -74,8 +115,8 @@ search = (searchArtist, searchYearPublished) => {
 //         return console.log(`Didn't find anything, your array ${searchArray}is still empty.`);
 // };
 
-search('Olivia Dean', 2020); //expect true
-search('Olafur Arnalds', 2013);
+//search();
+//search('Olafur Arnalds', 2013);
 //search();
 //search('Taylor Swift', 1994); //expect false
 //search(); // return collection
