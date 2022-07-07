@@ -15,13 +15,14 @@ addToCollection = (title, artist, yearPublished, name, duration) => {
 };
 
 
-addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, 'Sudden Throw', '3:16');
-// addToCollection('Rave', 'Dxrk', 2022, 'RAVE', '2:49');
-// addToCollection('Discoveries', 'amies', 2021, 'Come Find Me', '3:26');
-// addToCollection('What Am I Gonna Do On Sundays?', 'Olivia Dean', 2020, 'What Am I Gonna Do On Sundays?', '3:29');
-// addToCollection('Fragile', 'Laufey', 2022, 'Fragile', '4:01');
-// addToCollection('Festival Da Canção 2022', 'MARO', 2022, 'saudade, saudade', '3:01');
-// addToCollection('Feeding Seahorses by Hand', 'Billie Marten', 2019, 'She Dances', '4:43');
+addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, "Sudden Throw", "3:16");
+addToCollection('Living Room Songs', 'Olafur Arnalds', 2011, "Near Light", "3:28");
+addToCollection('Rave', 'Dxrk', 2022, 'RAVE', '2:49');
+addToCollection('Discoveries', 'amies', 2021, 'Come Find Me', '3:26');
+addToCollection('What Am I Gonna Do On Sundays?', 'Olivia Dean', 2020, 'What Am I Gonna Do On Sundays?', '3:29');
+addToCollection('Fragile', 'Laufey', 2022, 'Fragile', '4:01');
+addToCollection('Festival Da Canção 2022', 'MARO', 2022, 'saudade, saudade', '3:01');
+addToCollection('Feeding Seahorses by Hand', 'Billie Marten', 2019, 'She Dances', '4:43');
 
 //console.log(collection); // After all are added, console.log the collection array.
 
@@ -29,6 +30,7 @@ addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, 'Sudden Throw', '
 //for loop that only goes through the tracks part of the object?
 //for (let i = 0; i<array[i].tracks.length; i++)
 // but I also want this to print something like #1... #2...etc etc.
+
 showCollection = (array) => {
     console.log(`The number of items in the array is: ${array.length}`)
     for (let i = 0; i<array.length; i++){
@@ -39,21 +41,23 @@ showCollection = (array) => {
     }
 };
 
-showCollection(collection);
+//showCollection(collection);
 
 findByArtist = (artist) => {
     let matchedResults = [];
     let noResults = [];
     for (let i = 0; i < collection.length; i++) {
         if (artist == collection[i].artist) {
+            //console.log(`This artist was found: ${artist}.`)
             matchedResults.push(collection[i]);
-            return console.log(`This artist was found: ${artist}.`)
-        }
-    } 
-            return console.log(`No artist was found. ${noResults}`)
-}
+            //console.log(matchedResults);
+        } 
+            console.log(`This artist was found: ${artist}.`)
+            return console.log(matchedResults);
+    }
+};
 
-
+findByArtist('Olafur Arnalds')
 search = (searchArtist, searchYearPublished) => {
     let searchArray = [];
     //no search criteria 
@@ -72,7 +76,6 @@ search = (searchArtist, searchYearPublished) => {
     }
 }
 };
-
 //search(); // should console the entire collection
 //search('Olafur Arnalds', 2013); // should return (artist: 'Olafur Arnalds, year: 2013)
 //search('Olaf Arnalds', 2013); // Should Empty array: search array
