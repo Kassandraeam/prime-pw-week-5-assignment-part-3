@@ -1,5 +1,5 @@
 console.log('***** Music Collection *****')
-
+trackNumber = ['1.', '2.','3.','4.','5.','6.','7.','8.','9.','10.'];
 let collection = [];
 
 addToCollection = (title, artist, yearPublished, name, duration) => {
@@ -7,12 +7,13 @@ addToCollection = (title, artist, yearPublished, name, duration) => {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
-        tracks: [name, duration] // this needs to be an array.
+        tracks: [name, duration] // this needs to be an array?
     }
     collection.push(information);
     //return console.log(information);
     return information;
 };
+
 
 addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, 'Sudden Throw', '3:16');
 // addToCollection('Rave', 'Dxrk', 2022, 'RAVE', '2:49');
@@ -24,15 +25,20 @@ addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, 'Sudden Throw', '
 
 //console.log(collection); // After all are added, console.log the collection array.
 
+// loop that goes through the length of the tracks array and starts it with 1. 2. 3. so on so forth and then array[i].tracks[0] and then the duration.
+//for loop that only goes through the tracks part of the object?
+//for (let i = 0; i<array[i].tracks.length; i++)
+// but I also want this to print something like #1... #2...etc etc.
 showCollection = (array) => {
     console.log(`The number of items in the array is: ${array.length}`)
     for (let i = 0; i<array.length; i++){
         console.log(`${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`);
-        console.log(`${array[i].tracks[0]}: ${array[i].tracks[1]}`)
+        for (let i=0; i<collection.length; i++) {
+            console.log(`${trackNumber[i]} ${array[i].tracks[0]}: ${array[i].tracks[1]}`);
+        }
     }
 };
-// loop that goes through the length of the tracks array and starts it with 1. 2. 3. so on so forth and then array[i].tracks[0] and then the duration.
-//for loop that only goes through the tracks part of the object?
+
 showCollection(collection);
 
 findByArtist = (artist) => {
