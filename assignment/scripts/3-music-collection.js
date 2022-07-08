@@ -3,19 +3,29 @@ trackNumber = ['1.', '2.','3.','4.','5.','6.','7.','8.','9.','10.'];
 let collection = [];
 
 //Collection:
-addToCollection = (title, artist, yearPublished) => {
+//okay maybe the object doesn't need to be IN the function?
+addToCollection = (title, artist, yearPublished, tracks) => {
     let information = {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
-        //tracks: [name, duration] // this needs to be an array?
+        tracks: tracks // this needs to be an array?
     }
     collection.push(information);
     return information;
     //return console.log(information); //remember to uncomment this.
 };
-addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013);
-addToCollection('Living Room Songs', 'Olafur Arnalds', 2013);
+let testingTracks = collection.tracks = 'Testing'; 
+let testingTracks2 = collection.tracks = 'Testing2';
+// information.tracks.name = 'track name'
+// information.tracks.duration = 'duration'
+//add an array of tracks to the album objects.
+/*
+information.tracks.name = 'track name'
+information.tracks.duration = 'duration'
+*/
+addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, testingTracks);
+addToCollection('Living Room Songs', 'Olafur Arnalds', 2013, testingTracks2);
 addToCollection('Island Songs', 'Olafur Arnalds', 2016);
 addToCollection('What Am I Gonna Do On Sundays?', 'Olivia Dean', 2020);
 addToCollection('Fragile', 'Laufey', 2022);
@@ -32,12 +42,12 @@ showCollection = (array) => {
     console.log(`The number of items in the array is: ${array.length}`)
     for (let i = 0; i<array.length; i++){
         console.log(`${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`);
-        // for (let i=0; i<collection.length; i++) {
-        //     console.log(`${trackNumber[i]} ${array[i].tracks[0]}: ${array[i].tracks[1]}`);
-        // }
+        for (let i=0; i<collection.length; i++) {
+            console.log(`${trackNumber[i]} ${collection[i].tracks}`);
+        }
     }
 };
-//showCollection(collection);
+showCollection(collection);
 
 //Find by Artist:
 findByArtist = (artist) => {
@@ -86,9 +96,9 @@ search = (searchArtist, searchYearPublished) => {
     return console.log(searchArray);
 }
 
-//search(); // should console the entire collection
 //search('Olafur Arnalds', 2013); // should return (artist: 'Olafur Arnalds, year: 2013)
 //search('Olaf Arnalds', 2013); // Should Empty array: search array
+//search(); // should console the entire collection
 
 //BROOOOOOOOOOOO WHYS THIS SO HARD
 
