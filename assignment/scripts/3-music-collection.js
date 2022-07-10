@@ -9,7 +9,8 @@ addToCollection = (title, artist, yearPublished, tracks) => {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
-        tracks: tracks // this needs to be an array?
+        tracks: tracks, // this needs to be an array?
+        
     }
     collection.push(information);
     return information;
@@ -32,7 +33,7 @@ information.tracks.duration = 'duration'
 
 // first three albums are from the same artist. The first two of those three were made in the same year (not true, but just to test the search function.). 
 //{name:"", duration:""},
-addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, [{name: "Sudden Throw", duration: "3:16"}, {name: "Brim", duration: "4:42"}, {name:"For Now I Am Winter", duration:"5:05"},{name:"A Stutter", duration:"5:09"},{name: "Words of Amber", duration:"3:22"},{name:"Reclaim", duration:"4:01"}, {name: "Hands, Be Still", duration:"3:06"},{name:"Only The Winds", duration:"5:21"},{name:"Old Skin", duration:"4:08"},{name:"We (Too) Shall Rest", duration:"2:05"},{name:"This Place Was A Shelter", duration:"3:50"},{name:"Carry Me Anew", duration:"3:30"}]); 
+addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, [{name: "Sudden Throw", duration: "3:16"}, {name: "Brim", duration: "4:42"}, {name:"For Now I Am Winter", duration:"5:05"},{name:"A Stutter", duration:"5:09"},{name: "Words of Amber", duration:"3:22"},{name:"Reclaim", duration:"4:01"}, {name: "Hands Be Still", duration:"3:06"},{name:"Only The Winds", duration:"5:21"},{name:"Old Skin", duration:"4:08"},{name:"We (Too) Shall Rest", duration:"2:05"},{name:"This Place Was A Shelter", duration:"3:50"},{name:"Carry Me Anew", duration:"3:30"}]); 
 
 addToCollection('Living Room Songs', 'Olafur Arnalds', 2013, [{name: "Fyrsta", duration: "4:16"}, {name: "Near Light", duration:"3:28"},{name:"Film Credits", duration:"3:24"},{name:"Lag Fyrir Ömmu", duration:"3:32"},{name:"This Place Is a Shelter", duration:"2:18"}]);
 
@@ -56,28 +57,30 @@ addToCollection('Stare at Each Other & Fall in Love', 'Daniela Andrade', 2018, [
 //console.log('This is the Collection array: ', collection)
 //console.log(collection);
 //Show Collection:
-
+//this is the definition of working harder, not smarter :') 
 showCollection = (array) => {
+    let count = 0;
     console.log(`The number of items in the array is: ${array.length}`)
     for (let i = 0; i<array.length; i++){
       //console.log('',array[i].title, "by", array[i].artist, array[i].yearPublished, array[i].tracks);
         console.log('',array[i].title, "by", array[i].artist, "published in", array[i].yearPublished);
-        //console.log(typeof(array[i].tracks)); //object
-        //console.log(array[i].tracks);
-        let plzWork = array[i].tracks;
-        let GODIAMSOTIREDOFTHISPROBLEM = Object.values(plzWork)
-       //console.log(GODIAMSOTIREDOFTHISPROBLEM);
-        for (let pain of GODIAMSOTIREDOFTHISPROBLEM){
-            //https://www.w3schools.com/js/js_json_stringify.asp#:~:text=Stringify%20a%20JavaScript%20Object&text=Use%20the%20JavaScript%20function%20JSON,stringify(obj)%3B
-            let myJSON = JSON.stringify(pain);
-            console.log(myJSON)
-            //console.log(typeof(myJSON)); //STRING
+        for (let trackss of array[i].tracks) {
+            count += 1;
+            let myTracks = trackss;
+            let myTrackStrings = JSON.stringify(myTracks)
+            const result1 = myTrackStrings.replace(/[{}""]/g, ' ');
+            const result2 = result1.replace("name", '');
+            const result3 = result2.replace("duration", '')
+            const result4 = result3.replace(":", '')
+            const result5 = result4.replace(",", '')
+            const result6 = result5.replace(" ", '')
+            const result7 = result6.replace(" ", '')
+            const result8 = result7.replace(" ", '')
+            const result9 = result8.replace(" ", '')
+            const result10 = result9.replace("   ","")
+            console.log(`${count}. ${result10}`)
+            
         }
-        //console.log(typeof(GODIAMSOTIREDOFTHISPROBLEM))
-        // for (let PLZGODWORK of plzWork){
-        //     console.log(PLZGODWORK); //object
-        // }
-
     }
         return;
 };
