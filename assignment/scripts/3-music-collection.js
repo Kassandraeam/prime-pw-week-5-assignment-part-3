@@ -1,5 +1,5 @@
 console.log('***** Music Collection *****')
-trackNumber = ['1.', '2.','3.','4.','5.','6.','7.','8.','9.','10.'];
+trackNumber = 1;
 let collection = [];
 
 //Collection:
@@ -15,8 +15,11 @@ addToCollection = (title, artist, yearPublished, tracks) => {
     return information;
     //return console.log(information); //remember to uncomment this.
 };
-let testingTracks = collection.tracks = 'Testing'; 
-let testingTracks2 = collection.tracks = 'Testing2';
+
+let test = 'This did not push?';
+
+//let testingTracks = collection.tracks = 'Testing'; 
+//let testingTracks2 = collection.tracks = 'Testing2';
 // information.tracks.name = 'track name'
 // information.tracks.duration = 'duration'
 //add an array of tracks to the album objects.
@@ -24,29 +27,68 @@ let testingTracks2 = collection.tracks = 'Testing2';
 information.tracks.name = 'track name'
 information.tracks.duration = 'duration'
 */
-addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, testingTracks);
-addToCollection('Living Room Songs', 'Olafur Arnalds', 2013, testingTracks2);
-addToCollection('Island Songs', 'Olafur Arnalds', 2016);
-addToCollection('What Am I Gonna Do On Sundays?', 'Olivia Dean', 2020);
-addToCollection('Fragile', 'Laufey', 2022);
-addToCollection('Festival Da Canção 2022', 'MARO', 2022);
+// so now I can input multiple tracks. But how will I get it to print #1. and #2. in front of each element of the array.
+//addToCollection('Album', 'Artist', year, [{name: "track name", duration: "3:04"}])
 
+// first three albums are from the same artist. The first two of those three were made in the same year (not true, but just to test the search function.). 
+//{name:"", duration:""},
+addToCollection('For Now I Am Winter', 'Olafur Arnalds', 2013, [{name: "Sudden Throw", duration: "3:16"}, {name: "Brim", duration: "4:42"}, {name:"For Now I Am Winter", duration:"5:05"},{name:"A Stutter", duration:"5:09"},{name: "Words of Amber", duration:"3:22"},{name:"Reclaim", duration:"4:01"}, {name: "Hands, Be Still", duration:"3:06"},{name:"Only The Winds", duration:"5:21"},{name:"Old Skin", duration:"4:08"},{name:"We (Too) Shall Rest", duration:"2:05"},{name:"This Place Was A Shelter", duration:"3:50"},{name:"Carry Me Anew", duration:"3:30"}]); 
+
+addToCollection('Living Room Songs', 'Olafur Arnalds', 2013, [{name: "Fyrsta", duration: "4:16"}, {name: "Near Light", duration:"3:28"},{name:"Film Credits", duration:"3:24"},{name:"Lag Fyrir Ömmu", duration:"3:32"},{name:"This Place Is a Shelter", duration:"2:18"}]);
+
+addToCollection('Island Songs', 'Olafur Arnalds', 2016, [{name:"Árbakkinn - Islands Songs I", duration:"4:56"},{name:"1995 - Island Songs II", duration:"4:02"}, {name:"Raddir", duration:"4:13"},{name:"Öldurót - Island Songs IV", duration:"4:28"},{name:"Dalur - Island Songs V", duration:"4:02"},{name:"Particles - Island Songs VI", duration:"3:58"},{name:"Doria - Island Songs VII", duration:"3:22"},{name:"Study For Player Piano (II)", duration:"3:37"}]);
+
+addToCollection('What Am I Gonna Do On Sundays?', 'Olivia Dean', 2020, [{name:"What Am I Gonna Do On Sundays?", duration:"3:29"},{name:"The Hardest Part", duration:"2:56"},{name:"Echo", duration:"3:17"},{name:"Out", duration:"4:04"}]);
+
+addToCollection('Dear Soulmate', 'Laufey', 2022, [{name:"Dear Soulmate", duration:"4:20"},{name:"Fragile", duration:"4:01"},{name:"Everything I Know About Love", duration:"3:29"}]);
+
+addToCollection('Stare at Each Other & Fall in Love', 'Daniela Andrade', 2018, [{name: "Lose My Mind", duration: "2:41"},{name:"Stare at Each Other & Fall in Love ", duration:"3:48"}]);
+
+// for (let trackNames of tracks){
+//     console.log(trackNames);
+// }
+
+//console.log("HERE", tracks);
+
+
+//I can't access the keys:values outside of the function.
 //console.log(`This is the Collection array: ${collection}`) // this returns object object???
 //console.log('This is the Collection array: ', collection)
-
-
-
-
+//console.log(collection);
 //Show Collection:
+
 showCollection = (array) => {
     console.log(`The number of items in the array is: ${array.length}`)
     for (let i = 0; i<array.length; i++){
-        console.log(`${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`);
-        for (let i=0; i<collection.length; i++) {
-            console.log(`${trackNumber[i]} ${collection[i].tracks}`);
+      //console.log('',array[i].title, "by", array[i].artist, array[i].yearPublished, array[i].tracks);
+        console.log('',array[i].title, "by", array[i].artist, "published in", array[i].yearPublished);
+        //console.log(typeof(array[i].tracks)); //object
+        //console.log(array[i].tracks);
+        let plzWork = array[i].tracks;
+        let GODIAMSOTIREDOFTHISPROBLEM = Object.values(plzWork)
+       //console.log(GODIAMSOTIREDOFTHISPROBLEM);
+        for (let pain of GODIAMSOTIREDOFTHISPROBLEM){
+            //https://www.w3schools.com/js/js_json_stringify.asp#:~:text=Stringify%20a%20JavaScript%20Object&text=Use%20the%20JavaScript%20function%20JSON,stringify(obj)%3B
+            let myJSON = JSON.stringify(pain);
+            console.log(myJSON)
+            //console.log(typeof(myJSON)); //STRING
         }
+        //console.log(typeof(GODIAMSOTIREDOFTHISPROBLEM))
+        // for (let PLZGODWORK of plzWork){
+        //     console.log(PLZGODWORK); //object
+        // }
+
     }
+        return;
 };
+//it's treating the array[i].tracks as one large array. I need to break the array into its constituent parts. For of
+
+// collection = ['Track 1', 'Track 2', 'Track 3', 'Track 4', 'Track 5'];
+// trackNumber = 1;
+// for (let collections of collection) {
+//     console.log(trackNumber + ". " + collections);
+//     trackNumber += 1;
+// }
 showCollection(collection);
 
 //Find by Artist:
@@ -66,8 +108,6 @@ findByArtist = (artist) => {
 //findByArtist('MARO')
 //findByArtist('Olly oly oly')
 
-
-//Search Function
 
 // may need to make these actual if else statements
 //Search Function
@@ -93,7 +133,7 @@ search = (searchArtist, searchYearPublished) => {
         searchArray;
     }
  }
-    return console.log(searchArray);
+     return console.log(searchArray);
 }
 
 //search('Olafur Arnalds', 2013); // should return (artist: 'Olafur Arnalds, year: 2013)
